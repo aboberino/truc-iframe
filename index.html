@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>From iframe</h1>
+
+    <div class="content">Article 1</div>
+    <div class="content">Article 2</div>
+    <div class="content">Article 3</div>
+
+    <style>
+      body {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .content {
+        height: 600px;
+        width: 400px;
+        background-color: bisque;
+        padding: 12px;
+        border-radius: 12px;
+      }
+    </style>
+
+    <script>
+      window.addEventListener('load', function () {
+        let message = {
+          height: document.body.scrollHeight,
+          width: document.body.scrollWidth,
+        };
+        
+        // window.top refers to parent window
+        window.top.postMessage(message, '*');
+      });
+    </script>
+  </body>
+</html>
